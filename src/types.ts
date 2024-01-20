@@ -1,4 +1,14 @@
-export type SemanticVersion = {
+export type ObjectType =
+  | "SemanticVersion"
+  | "Lexicon"
+  | "Challenge"
+  | "Document";
+
+export type Object<T extends ObjectType> = {
+  __objectName: T;
+};
+
+export type SemanticVersion = Object<"SemanticVersion"> & {
   major: number;
   minor: number;
   patch: number;
@@ -11,24 +21,31 @@ export type IVersioned = {
   version: SemanticVersion;
 };
 
-export type Document<T> = IIdentified &
-  IVersioned & {
+export type Document<
+  T = string,
+  N extends ObjectType = "Document"
+> = IIdentified &
+  IVersioned &
+  Object<N> & {
     scope: Scope;
     content: T;
   };
 
-export type Lexicon = Document<{
-  [key: string]: {
-    definition: string;
-    description: string;
-  };
-}>;
+export type Lexicon = Document<
+  {
+    [key: string]: {
+      definition: string;
+      description: string;
+    };
+  },
+  "Lexicon"
+>;
 
 export type Scope = {
   lexicon: Lexicon | null;
+  challenges: Challenge[];
 };
 
-export type Challenge = Document<{}> & {
-  target: string; // Document ID.
+export type Challenge = Document<string, "Challenge"> & {
   status: "open" | "closed";
 };

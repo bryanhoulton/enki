@@ -13,5 +13,5 @@ export function save(path: string, doc: Document<string>): void {
   return writeFileSync(path, json, "utf8");
 }
 
-const doc = load("test-instance/enki.json");
-console.log('Loaded doc from "test-instance/enki.json":', doc.id);
+const doc = load("./test-instance/base-enki.json");
+console.log(doc);

@@ -1,13 +1,1 @@
-{
-  "id": "clrmc7sga0000zqtl1zs7dtxj",
-  "version": { "major": 0, "minor": 0, "patch": 0 },
-  "scope": {
-    "lexicon": {
-      "id": "clrmc7sga0001zqtl4mjudr14",
-      "version": { "major": 0, "minor": 0, "patch": 0 },
-      "scope": { "lexicon": null },
-      "content": { "foo": { "definition": "bar", "description": "baz" } }
-    }
-  },
-  "content": "foo"
-}
+{"__objectName":"Document","id":"clrmc7sga0000zqtl1zs7dtxj","version":{"__objectName":"SemanticVersion","major":0,"minor":0,"patch":0},"scope":{"lexicon":{"__objectName":"Lexicon","id":"clrmc7sga0001zqtl4mjudr14","version":{"__objectName":"SemanticVersion","major":0,"minor":0,"patch":0},"scope":{"lexicon":null,"challenges":[]},"content":{"foo":{"definition":"bar","description":"baz"}}},"challenges":[]},"content":"foo"}
