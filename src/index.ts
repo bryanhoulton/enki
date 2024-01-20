@@ -1,17 +1,25 @@
-import { readFileSync, writeFileSync } from "fs";
+import { Command } from "commander";
+import { textSync } from "figlet";
+import { prompt } from "promptly";
 
-import { Document } from "./types";
+import config from "../package.json";
+import { minLength } from "./validators";
 
-export function load(path: string): Document<string> {
-  const file = readFileSync(path, "utf8");
-  const obj = JSON.parse(file) as Document<string>;
-  return obj;
-}
+(async () => {
+  const program = new Command();
+  program
+    .version(config.version)
+    .description("A CLI implementation of the Enki Protocol.");
 
-export function save(path: string, doc: Document<string>): void {
-  const json = JSON.stringify(doc);
-  return writeFileSync(path, json, "utf8");
-}
+  console.log(textSync("Enki  CLI"));
 
-const doc = load("./test-instance/base-enki.json");
-console.log(doc);
+  const instance = program.command("instance");
+  instance
+    .command("create")
+    .description("Create a new Enki instance.")
+    .action(async () => {
+      const name = await prompt("Instance Name: ", { validator: minLength(4) });
+    });
+
+  program.parse(process.argv);
+})();
