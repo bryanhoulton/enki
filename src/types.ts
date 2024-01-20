@@ -46,6 +46,12 @@ export type Scope = {
   challenges: Challenge[];
 };
 
-export type Challenge = Document<string, "Challenge"> & {
+export type Challenge = Document<
+  {
+    target: string;
+    replacement: string;
+  },
+  "Challenge"
+> & {
   status: "open" | "closed";
 };
