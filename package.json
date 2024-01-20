@@ -1,17 +1,23 @@
 {
+  "name": "enki",
   "license": "MIT",
   "version": "1.0.0",
   "scripts": {
     "build": "tsc",
-    "dev": "npx ts-node src/index.ts"
+    "dev": "npx ts-node src/index.ts",
+    "watch": "tsc-watch --onSuccess \"sh scripts/install.sh\""
+  },
+  "bin": {
+    "enki": "./dist/index.js"
   },
   "devDependencies": {
-    "typescript": "^5.3.3"
-  },
-  "dependencies": {
     "@types/figlet": "^1.5.8",
     "@types/node": "^20.11.5",
     "@types/promptly": "^3.0.5",
+    "typescript": "^5.3.3",
+    "tsc-watch": "^6.0.4"
+  },
+  "dependencies": {
     "commander": "^11.1.0",
     "cuid": "^3.0.0",
     "figlet": "^1.7.0",

@@ -2,7 +2,8 @@ export type ObjectType =
   | "SemanticVersion"
   | "Lexicon"
   | "Challenge"
-  | "Document";
+  | "Document"
+  | "Instance";
 
 export type Object<T extends ObjectType> = {
   __objectName: T;
@@ -54,4 +55,10 @@ export type Challenge = Document<
   "Challenge"
 > & {
   status: "open" | "closed";
+};
+
+export type Instance = Object<"Instance"> & {
+  name: string;
+  id: string;
+  documents: Document[];
 };
